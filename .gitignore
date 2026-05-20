@@ -1,0 +1,7 @@
+echo "venv/
+__pycache__/
+*.pyc
+.env
+climate_db/
+*.egg-info/
+.DS_Store" > .gitignore

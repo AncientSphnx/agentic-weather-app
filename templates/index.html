@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Prediction AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="weather-bg">
+        <div class="weather-animation">
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+            <div class="cloud cloud3"></div>
+            <div class="sun"></div>
+            <div class="rain">
+                <div class="drop"></div>
+                <div class="drop"></div>
+                <div class="drop"></div>
+                <div class="drop"></div>
+                <div class="drop"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-cloud-sun"></i>
+                    <h1>Weather Prediction AI</h1>
+                </div>
+                <p class="subtitle">Advanced Machine Learning Weather Forecasting</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="prediction-card">
+                <div class="card-header">
+                    <i class="fas fa-temperature-high"></i>
+                    <h2>Temperature Prediction</h2>
+                </div>
+                
+                <form id="predictionForm" class="prediction-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="date">
+                                <i class="fas fa-calendar"></i>
+                                Date
+                            </label>
+                            <input type="date" id="date" name="date" required>
+                            <small>Select date for prediction</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="humidity">
+                                <i class="fas fa-tint"></i>
+                                Humidity (%)
+                            </label>
+                            <div class="input-with-slider">
+                                <input type="number" id="humidity" name="humidity" min="0" max="100" step="1" value="50" required>
+                                <input type="range" id="humiditySlider" min="0" max="100" step="1" value="50">
+                            </div>
+                            <small>Relative humidity (0-100%)</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="windSpeed">
+                                <i class="fas fa-wind"></i>
+                                Wind Speed (km/h)
+                            </label>
+                            <div class="input-with-slider">
+                                <input type="number" id="windSpeed" name="windSpeed" min="0" max="50" step="0.1" value="10" required>
+                                <input type="range" id="windSpeedSlider" min="0" max="50" step="0.1" value="10">
+                            </div>
+                            <small>Wind velocity (0-50 km/h)</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pressure">
+                                <i class="fas fa-compress-arrows-alt"></i>
+                                Pressure (hPa)
+                            </label>
+                            <div class="input-with-slider">
+                                <input type="number" id="pressure" name="pressure" min="900" max="1050" step="1" value="1013" required>
+                                <input type="range" id="pressureSlider" min="900" max="1050" step="1" value="1013">
+                            </div>
+                            <small>Atmospheric pressure (900-1050 hPa)</small>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="predict-btn">
+                        <i class="fas fa-magic"></i>
+                        Predict Temperature
+                    </button>
+                </form>
+
+                <div id="result" class="result-container hidden">
+                    <div class="result-card">
+                        <div class="result-icon">
+                            <i class="fas fa-thermometer-half"></i>
+                        </div>
+                        <div class="result-content">
+                            <h3>Predicted Temperature</h3>
+                            <div class="temperature-display">
+                                <span id="tempValue">--</span>
+                                <span class="unit">°C</span>
+                            </div>
+                            <div class="weather-condition" id="weatherCondition">
+                                Loading...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h4>Model Accuracy</h4>
+                            <div class="stat-value" id="modelAccuracy">Loading...</div>
+                            <p id="modelMetrics">Loading model info...</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h4>Training Data</h4>
+                            <div class="stat-value" id="dataSamples">Loading...</div>
+                            <p id="dataRange">Loading data info...</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h4>Algorithm</h4>
+                            <div class="stat-value" id="algorithmName">Loading...</div>
+                            <p id="algorithmDetails">Loading model info...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer">
+            <p>Powered by Machine Learning • Delhi Climate Dataset</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
