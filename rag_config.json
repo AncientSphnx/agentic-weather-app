@@ -1,0 +1,5 @@
+{
+  "embedding_model": "all-MiniLM-L6-v2",
+  "db_path": "./climate_db",
+  "collection": "delhi_climate"
+}
